@@ -29,7 +29,7 @@ final class ReflectedClass
 
     /**
      *
-     * @var Zms5Library\Framework\ManagerModule\ModuleConfigure|Zms5Library\Framework\ManagerModule\ManagerConfigure|Zms5Library\Framework\ManagerModule\IModuleConfigure|Zms5Library\Framework\ManagerModule\IManagerConfigure
+     * @var \Hopeter1018\Framework\ManagerModule\ModuleConfigure|\Hopeter1018\Framework\ManagerModule\ManagerConfigure|\Hopeter1018\Framework\ManagerModule\IModuleConfigure|\Hopeter1018\Framework\ManagerModule\IManagerConfigure
      */
     public $obj = null;
 
