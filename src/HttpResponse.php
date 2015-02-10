@@ -26,17 +26,17 @@ final class HttpResponse
      */
     public static function setFormError($msg)
     {
-        header("zms-form-error: $msg", false, 500);
+        header("framework-form-error: $msg", false, 500);
     }
 
     /**
-     * return response header with name "zms-message"
+     * return response header with name "framework-message"
      * @param string $msg
      */
     public static function setErrorMessage($msg)
     {
         $msgFormatted = String::stripLineBreak(var_export($msg, true), " ");
-        header("zms-message: $msgFormatted", false, 500);
+        header("framework-message: $msgFormatted", false, 500);
     }
     
     private static $msgCounter = 0;
@@ -46,7 +46,7 @@ final class HttpResponse
         if ($name === null) {
             $name = ++ static::$msgCounter;
         }
-        header("zms-msg-{$name}: $msg", false);
+        header("framework-msg-{$name}: $msg", false);
     }
 
     /**
