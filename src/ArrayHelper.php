@@ -9,13 +9,39 @@
 namespace Hopeter1018\Helper;
 
 /**
- * Description of ${name}
+ * Description of ArrayHelper
  *
  * @version $id$
  * @author peter.ho
  */
 class ArrayHelper
 {
+
+    /**
+     * 
+     * @param type $array
+     * @param type $column_key
+     * @param type $index_key
+     * @return type
+     */
+    public static function column($array, $column_key, $index_key = null)
+    {
+        if (function_exists('array_column')) {
+            return array_column($array, $column_key, $index_key);
+        } else {
+            $result = array();
+            if ($index_key === null) {
+                foreach ($array as $row) {
+                    $result[] = $row[$column_key];
+                }
+            } else {
+                foreach ($array as $row) {
+                    $result[ $row[$index_key] ] = $row[$column_key];
+                }
+            }
+            return $result;
+        }
+    }
 
     /**
      * 
