@@ -40,13 +40,20 @@ final class HttpResponse
     }
     
     private static $msgCounter = 0;
-    public static function addMessage($msgSrc, $name = '__')
+    /**
+     * 
+     * @param string $msgSrc
+     * @param string $name
+     * @param string $prefix
+     */
+    public static function addMessage($msgSrc, $name = '__', $prefix = '')
     {
         $msg = String::stripLineBreak(var_export($msgSrc, true), " ");
         if ($name === null) {
-            $name = ++ static::$msgCounter;
+            $name = '';
         }
-        header("framework-msg-{$name}: $msg", false);
+        $index = sprintf('%04d', ++ static::$msgCounter) . '-';
+        header("zms-msg-{$index}{$prefix}{$name}: $msg", false);
     }
 
     /**
