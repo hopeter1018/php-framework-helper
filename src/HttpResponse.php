@@ -53,7 +53,7 @@ final class HttpResponse
             $name = '';
         }
         $index = sprintf('%04d', ++ static::$msgCounter) . '-';
-        header("zms-msg-{$index}{$prefix}{$name}: $msg", false);
+        header("hkc-msg-{$index}{$prefix}{$name}: $msg", false);
     }
 
     /**
