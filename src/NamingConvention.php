@@ -149,11 +149,21 @@ class NamingConvention
 // </editor-fold>
 // <editor-fold defaultstate="collapsed" desc="named by function">
 
+    /**
+     * String transform from dash to pascal
+     * @param string $urlParts
+     * @return string
+     */
     public static function urlPartsToController($urlParts)
     {
         return static::toPascal(static::fromDash($urlParts));
     }
 
+    /**
+     * String transform from dash to camel
+     * @param string $urlParts
+     * @return string
+     */
     public static function urlPartsToMethod($urlParts)
     {
         return static::toCamel(static::fromDash($urlParts));
