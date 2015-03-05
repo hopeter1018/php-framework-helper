@@ -10,7 +10,6 @@
             "role": "Developer"
     }],
     "require": {
-        "hoa/session": "0.*@dev"
 	},
     "autoload": {
         "psr-4": {
