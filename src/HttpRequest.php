@@ -25,12 +25,13 @@ class HttpRequest
     public static function getRequestParams()
     {
         $request = json_decode(file_get_contents("php://input"));
-//        if (\Zms5\Helpers\RequestHeaderHelper::has('zms-form-upload')) {
-//            $request = (object) $_POST;
-//        }
+        if (HttpRequest::has('zms-form-upload')) {
+            $request = json_decode($_POST['data']);
+        }
         if (APP_IS_DEV and $request == null) {
             $request = (object) $_GET;
         }
+        HttpResponse::addMessageUat($request);
         return $request;
     }
 
@@ -46,6 +47,16 @@ class HttpRequest
             throw new \Exception("HttpRequest::getHeader parameter is not in good format: {$name}");
         }
         return $_SERVER['HTTP_' . $name] ?: null;
+    }
+
+    /**
+     * 
+     * @param string $name
+     * @return boolean
+     */
+    public static function has($name)
+    {
+        return $_SERVER['HTTP_' . strtoupper(str_replace('-', '_', $name))];
     }
 
 }

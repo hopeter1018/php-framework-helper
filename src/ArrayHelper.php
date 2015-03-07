@@ -96,6 +96,26 @@ class ArrayHelper
     }
 
     /**
+     * 
+     * @param array $array
+     * @return stdClass
+     */
+    public static function rescursiveToObject($array)
+    {
+        $obj = new \stdClass;
+        foreach ($array as $k => $v) {
+            if (strlen($k)) {
+                if (is_array($v)) {
+                    $obj->{$k} = static::rescursiveToObject($v); //RECURSION
+                } else {
+                    $obj->{$k} = $v;
+                }
+            }
+        }
+        return $obj;
+    }
+
+    /**
      * return all key in json rescursively, <br />
      * * sub key will be prepended by parent key + $seperator
      * @param array $array
