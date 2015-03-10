@@ -56,7 +56,7 @@ class HttpRequest
      */
     public static function has($name)
     {
-        return $_SERVER['HTTP_' . strtoupper(str_replace('-', '_', $name))];
+        return isset($_SERVER['HTTP_' . strtoupper(str_replace('-', '_', $name))]) ? true : false;
     }
 
 }
