@@ -151,12 +151,15 @@ class NamingConvention
 
     /**
      * String transform from dash to pascal
+     * 
      * @param string $urlParts
      * @return string
      */
     public static function urlPartsToController($urlParts)
     {
-        return static::toPascal(static::fromDash($urlParts));
+        return implode("\\", array_map(function($part) {
+            return NamingConvention::toPascal(NamingConvention::fromDash($part));
+        }, preg_split("~[\/\.]~", $urlParts)));
     }
 
     /**
