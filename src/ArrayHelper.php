@@ -176,4 +176,24 @@ class ArrayHelper
         }
     }
 
+    /**
+     * return \stdClass
+     */
+    public static function toObjectNested($array)
+    {
+        $result = $array;
+        if (is_array($array)) {
+            foreach ($array as $key => $value) {
+                if (is_integer($key)) {
+                    // only need this if you want to keep the array indexes separate
+                    // from the object notation: eg. $o->{1}
+                    $array['index'][$key] = static::toObjectNested($value);
+                } else {
+                    $array[$key] = static::toObjectNested($value);
+                }
+            }
+            $result = (object) $array;
+        }
+        return $result;
+    }
 }
