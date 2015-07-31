@@ -31,7 +31,6 @@ class HttpRequest
         if (APP_IS_DEV and $request == null) {
             $request = (object) $_GET;
         }
-        HttpResponse::addMessageUat($request);
         return $request;
     }
 
